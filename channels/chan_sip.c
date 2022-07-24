@@ -21525,8 +21525,8 @@ static char *sip_show_sched(struct ast_cli_entry *e, int cmd, struct ast_cli_arg
 /*! \brief  Show SIP Registry (registrations with other SIP proxies */
 static char *sip_show_registry(struct ast_cli_entry *e, int cmd, struct ast_cli_args *a)
 {
-#define FORMAT2 "%-39.39s %-6.6s %-12.12s  %8.8s %-20.20s %-25.25s\n"
-#define FORMAT  "%-39.39s %-6.6s %-12.12s  %8d %-20.20s %-25.25s\n"
+#define FORMAT2 "%-39.39s %-6.6s %-21.21s  %8.8s %-20.20s %-25.25s\n"
+#define FORMAT  "%-39.39s %-6.6s %-21.21s  %8d %-20.20s %-25.25s\n"
 	char host[80];
 	char user[80];
 	char tmpdat[256];
