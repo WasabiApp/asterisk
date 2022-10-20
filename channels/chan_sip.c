@@ -34041,14 +34041,19 @@ static void sip_keepalive_all_peers(void)
 /*! \brief Send all known registrations */
 static void sip_send_all_registers(void)
 {
-	int ms = global_reg_timeout * 1000
-	int regspacing = global_reg_timeout * 1000
-	struct ao2_iterator iter;
-	struct sip_registry *iterator;
+	int ms;
+ 	int regspacing;
+ 	struct ao2_iterator iter;
+ 	struct sip_registry *iterator;
 
-	if (!ao2_container_count(registry_list)) {
-		return;
-	}
+ 	if (!ao2_container_count(registry_list)) {
+ 		return;
+ 	}
+ 	regspacing = default_expiry * 1000 / ao2_container_count(registry_list);
+ 	if (regspacing > 100) {
+ 		regspacing = 100;
+ 	}
+ 	ms = regspacing;
 
 	iter = ao2_iterator_init(registry_list, 0);
 	while ((iterator = ao2_t_iterator_next(&iter, "sip_send_all_registers iter"))) {
